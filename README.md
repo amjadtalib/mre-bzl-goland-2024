@@ -36,24 +36,24 @@ com.google.idea.bazel.ijwb (2024.04.09.0.1-api-version-241)
 1. Clone this repository:
 
    ```shell
-   $ gh repo clone amjadtalib/mre-bzl-goland-2024
+   gh repo clone amjadtalib/mre-bzl-goland-2024
    ```
 2. Build the project:
 
    ```shell
-   $ bazel build //...
+   bazel build //...
    ```
 3. Run the server:
 
    ```shell
-   $ bazel run //src/apps/greeter/server:server
+   bazel run //src/apps/greeter/server:server
    ```
 4. Run the client:
 
    ```shell
-   $ bazel run //src/apps/greeter/client:client --name="GoLand 2024.1"
+   bazel run //src/apps/greeter/client:client
    ```
-5. Open the repository in GoLand 2024.1.1.
+5. Import the bazel project in GoLand 2024.1.1 using default project settings.
 6. Open either `src/apps/greeter/client/main.go` or `src/apps/greeter/server/main.go`.
 7. Notice the editor's problems highlighting is stuck in `Analyzing...`:
 
