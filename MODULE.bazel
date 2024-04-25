@@ -1,0 +1,26 @@
+module(
+    name = "mre-bzl-goland-2024",
+)
+
+# Bazel dependencies
+bazel_dep(name = "rules_go", version = "0.47.0")
+bazel_dep(name = "gazelle", version = "0.36.0")
+bazel_dep(name = "rules_proto", version = "6.0.0-rc3")
+
+# SDK/Toolchain registrations
+go_sdk = use_extension("@rules_go//go:extensions.bzl", "go_sdk")
+go_sdk.download(
+    name = "go_sdk",
+    version = "1.22.2",
+)
+use_repo(go_sdk, "go_sdk")
+
+# Go dependencies
+go_deps = use_extension("@gazelle//:extensions.bzl", "go_deps")
+go_deps.from_file(go_mod = "//src/apps:go.mod")
+
+# All *direct* Go dependencies of the module have to be listed explicitly.
+use_repo(
+    go_deps,
+    "org_golang_google_grpc",
+)
